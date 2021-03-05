@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="su.entities.Course" table="courses">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <set name="students" cascade="save-update" table="subscriptions">
+            <key column="course_id"/>
+            <many-to-many column="student_id" class="su.entities.Student"/>
+        </set>
+
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="duration" column="duration" type="java.lang.Integer"/>
+        <property name="type">
+            <column name="type"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">su.entities.CourseType</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="description" column="description" type="java.lang.String"/>
+        <many-to-one name="teacher" column="teacher_id" class="su.entities.Teacher" cascade="all"/>
+        <property name="studentsCount" column="students_count" type="java.lang.Integer"/>
+        <property name="price" column="price" type="java.lang.Integer"/>
+        <property name="pricePerHour" column="price_per_hour" type="java.lang.Float"/>
+
+    </class>
+
+    <class name="su.entities.Student" table="students">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="age" column="age" type="java.lang.Integer"/>
+        <property name="registrationDate" column="registration_date" type="java.util.Date"/>
+    </class>
+</hibernate-mapping>

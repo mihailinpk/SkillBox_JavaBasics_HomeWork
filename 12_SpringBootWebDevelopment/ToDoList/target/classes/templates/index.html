@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//RU" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Главный экран</title>
+    <style type="text/css">
+        a.button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            user-select: none;
+            background: #F79361;
+            padding: .3em 0.5em;
+            outline: none;
+            margin: 10px 2px 0px;
+            float: right;
+        }
+        a.button:hover { background: rgb(232,95,76); }
+        a.button:active { background: rgb(152,15,0); }
+        .table_todolist {
+            border-collapse: collapse;
+            border-left: 3px solid #F79361;
+            border-right: 3px solid #F79361;
+            border-bottom: 3px solid #F79361;
+            font-family: "Lucida Grande", sans-serif;
+            margin: 0px 0px 0px;
+        }
+        .table_todolist caption {
+            background: #F79361;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+            color: white;
+            font-family: "Roboto Slab",serif;
+            font-style: normal;
+            font-size: 26px;
+            text-align: center;
+            margin: 0px 0px 0px;
+        }
+        .table_todolist td, .table_todolist th {
+            padding: 9px;
+        }
+        .table_todolist th {
+            text-align: left;
+            font-size: 14px;
+        }
+        .table_todolist tr:nth-child(2n) {
+            background: #E5E5E5;
+        }
+        .table_todolist td:last-of-type {
+            text-align: left;
+        }
+        .table_todolist a {
+            color: #fff;
+            text-decoration: none;
+            user-select: none;
+            background: #F79361;
+            padding: .3em 0.5em;
+            outline: none;
+        }
+        .table_todolist a:hover { background: rgb(232,95,76);
+        }
+        a:active {
+            background: rgb(152,15,0);
+        }
+    </style>
+</head>
+<body>
+<table class="table_todolist" align="center" width="100%">
+    <caption>Список дел</caption>
+    <tr>
+        <th align="center">НАЗВАНИЕ</th>
+        <th align="center">ОПИСАНИЕ</th>
+        <th align="center">КРАЙНИЙ СРОК</th>
+    </tr>
+    <tr th:each="todo : ${todolist}">
+        <td th:text="${todo.shortDescription}"/>
+        <td th:text="${todo.detailedDescription}"/>
+        <td th:text="${todo.deadline}"/>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+
+    <appenders>
+        <File name="FileForInfo" fileName="logs/entered_data.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} - %msg%n"/>
+            <MarkerFilter marker="entered_data" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="FileForErrors" fileName="logs/errors.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} - %msg%n"/>
+            <MarkerFilter marker="errors" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+    </appenders>
+
+    <loggers>
+        <root level="info" additivity="false">
+            <appender-ref ref="FileForErrors" level="debug"/>
+            <appender-ref ref="FileForInfo" level="info"/>
+        </root>
+    </loggers>
+
+</configuration>
