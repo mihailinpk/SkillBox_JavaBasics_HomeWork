@@ -14,6 +14,6 @@ public class Main implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("Fuck them all !!!");
+        System.out.println("Hello world");
     }
 }
